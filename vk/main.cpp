@@ -1,5 +1,4 @@
 #define GLFW_INCLUDE_VULKAN
-
 #include <GLFW/glfw3.h>
 
 #define GLM_FORCE_RADIANS
@@ -9,7 +8,12 @@
 
 #include <iostream>
 
+#include "GlobalConfig.h"
+
 int main() {
+    printf("OUGDASM V%d.%d.%d (Vulkan version)\n", OUGDASM_VERSION_MAJOR, OUGDASM_VERSION_MINOR, OUGDASM_VERSION_PATCH);
+
+
     glfwInit();
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
