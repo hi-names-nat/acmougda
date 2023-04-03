@@ -16,6 +16,10 @@ configure_file(GlobalConfig.h.in GlobalConfig.h)
 
 IF (WIN32)
     FILE(APPEND ${PROJECT_BINARY_DIR}/GlobalConfig.h "#include \"windows.h\"\n")
+    set_target_properties(OUGDASM_Vulkan PROPERTIES OUTPUT_NAME "ougdasm_vk.exe")
+ENDIF()
+IF (UNIX)
+    set_target_properties(OUGDASM_Vulkan PROPERTIES OUTPUT_NAME "ougdasm_vk.o")
 ENDIF()
 
 target_include_directories(OUGDASM_Vulkan PUBLIC ${PROJECT_BINARY_DIR})
