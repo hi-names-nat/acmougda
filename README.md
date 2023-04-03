@@ -26,7 +26,7 @@ You **can** use MSVC, however you will likely have to mess with the CMakeLists!
 `lib-mingw-w64` folder and copy the contents into `acmougda/libwin64` The headers are already included.
 5. Target CmakeLists. Open `CMakeLists.txt` and find the line that reads '`set(VULKAN_SDK_PATH "C:/VulkanSDK/1.3.239.0")`'.
 Change the directory to wherever you installed Vulkan.
-6. Run the project!
+6. Run CMake and build!
 ## Linux
 [Tested on PopOS 22.04]
 1. Clone the repo into a folder of your choosing.
@@ -64,4 +64,4 @@ Change the directory to wherever you installed Vulkan.
    `libunix` folder. Your folder structure should look like this:
       
       <img src="doc/image/linux_lib.png">
-6. Run the project!
+6. Run CMake and build!
