@@ -47,6 +47,7 @@ Change the directory to wherever you installed Vulkan.
           sudo apt install libxxf86vm-dev libxi-dev
           ```
    2. run `vkcube` from the terminal. it should look like the below.
+   
       <img src="doc/image/linux_cube.png">
 4. [Install GLFW](https://www.glfw.org/download.html). 
    1. Download the 'Source Package' and extract it. 
@@ -57,8 +58,10 @@ Change the directory to wherever you installed Vulkan.
    2. after this runs, you should have a new folder called `build`. Move inside this folder and run
    the makefile. It will take a second!
    3. run `/tests/triangle-vulkan` to ensure it correctly built. it should look like the following:
+      
       <img src="doc/image/linux_glfw.png">
    4. in `build/src`, there will be quite a few files. Copy the  `.so`, `.3`, and the  `.3.3` into this repository's 
    `libunix` folder. Your folder structure should look like this:
+      
       <img src="doc/image/linux_lib.png">
 6. Run the project!
