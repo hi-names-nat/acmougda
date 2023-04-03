@@ -60,7 +60,6 @@ if (UNIX) #UNIX (assumes G++!!!!)
 
     TARGET_LINK_LIBRARIES(OUGDASM_Vulkan PRIVATE #VULKAN
         "${CMAKE_SOURCE_DIR}/libunix/libglfw.so"
-        "${CMAKE_SOURCE_DIR}/libunix/libglfw3.a"
         "${Vulkan_LIBRARY}"
     )
 endif()
