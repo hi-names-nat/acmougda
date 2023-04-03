@@ -7,13 +7,9 @@
 #include <glm/mat4x4.hpp>
 
 #include <iostream>
-
 #include "GlobalConfig.h"
 
 int main() {
-    printf("OUGDASM V%d.%d.%d (Vulkan version)\n", OUGDASM_VERSION_MAJOR, OUGDASM_VERSION_MINOR, OUGDASM_VERSION_PATCH);
-
-
     glfwInit();
 
     glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
