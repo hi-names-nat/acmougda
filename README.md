@@ -38,14 +38,15 @@ Change the directory to wherever you installed Vulkan.
 3. Install Vulkan and other dependencies.
    1. run the following on apt-based distros. Other package managers will likely
       have the needed packages under the same or similar names.
-          ```shell
-          wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
-          sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list https://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list
-          sudo apt update
-          sudo apt install vulkan-sdk
-          sudo apt install libglm-dev
-          sudo apt install libxxf86vm-dev libxi-dev
-          ```
+         ```shell
+         wget -qO- https://packages.lunarg.com/lunarg-signing-key-pub.asc | sudo tee /etc/apt/trusted.gpg.d/lunarg.asc
+         sudo wget -qO /etc/apt/sources.list.d/lunarg-vulkan-jammy.list https://packages.lunarg.com/vulkan/lunarg-vulkan-jammy.list
+         sudo apt update
+         sudo apt install vulkan-sdk
+         sudo apt install libglm-dev
+         sudo apt install libxxf86vm-dev libxi-dev
+         sudo apt install libxrandr-dev libxinerama-dev libxcursor-dev
+         ```
    2. run `vkcube` from the terminal. it should look like the below.
    
       <img src="doc/image/linux_cube.png">
