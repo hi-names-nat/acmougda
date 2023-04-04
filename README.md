@@ -22,8 +22,8 @@ You **can** use MSVC, however you will likely have to mess with the CMakeLists!
 3. [Install Vulkan](https://www.vulkan.lunarg.com/sdk/home) from the LunarG installer. It can go anywhere. After it's
    installed, run the included 'vkcube' example to ensure that it works correctly. It should look like the below.
     <img src="https://vulkan-tutorial.com/images/cube_demo.png">
-4. [Install GLFW](https://www.glfw.org/download.html) using the 64-bit Windows binaries. In the download archive, open the
-`lib-mingw-w64` folder and copy the contents into `acmougda/libwin64` The headers are already included.
+4. [Install GLFW](https://www.glfw.org/download.html) using the 64-bit Windows binaries. In the download archive, select the
+`lib-mingw-w64` and `vc-2022` folder and copy them into `acmougda/libwin64` The headers are already included.
 5. Target CmakeLists. Open `CMakeLists.txt` and find the line that reads '`set(VULKAN_SDK_PATH "C:/VulkanSDK/1.3.239.0")`'.
 Change the directory to wherever you installed Vulkan.
 6. Run CMake and build!
