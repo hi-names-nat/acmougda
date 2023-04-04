@@ -5,7 +5,7 @@ OUGDASM (OUGDA + ACM) is a renderer example project developed for the purposes o
 with the usage of the Vulkan renderer. This repository contains an example project that is
 a great springboard for learning about the Vulkan renderer, or attempting to make a small
 educational project within it. This is not set up to create large projects. If you would like
-to do that, your first step should be replacing GLFW with SDL.
+to do that, your first step should be replacing GLFW with SDL2.
 
 # Install
 Currently, I have the ability set-up both a Windows and Linux executable.
@@ -15,7 +15,7 @@ Currently, I have the ability set-up both a Windows and Linux executable.
 2. Install MinGW, and ensure it works. I suggest using [Chocolatey Package Manager](https://chocolatey.org/).
 You **can** use MSVC, however you will likely have to mess with the CMakeLists!
    1. Navigate to chocolatey.org/install
-   2. Run the script under 'Install Chocolatey for Indivdual use'
+   2. Run the script under 'Install Chocolatey for Individual use'
    3. Restart your shell
    4. Run `choco install mingw`
    5. run `g++` to ensure the proper installation
@@ -24,8 +24,6 @@ You **can** use MSVC, however you will likely have to mess with the CMakeLists!
     <img src="https://vulkan-tutorial.com/images/cube_demo.png">
 4. [Install GLFW](https://www.glfw.org/download.html) using the 64-bit Windows binaries. In the download archive, select the
 `lib-mingw-w64` and `vc-2022` folder and copy them into `acmougda/libwin64` The headers are already included.
-5. Target CmakeLists. Open `CMakeLists.txt` and find the line that reads '`set(VULKAN_SDK_PATH "C:/VulkanSDK/1.3.239.0")`'.
-Change the directory to wherever you installed Vulkan.
 6. Run CMake and build!
 ## Linux
 [Tested on PopOS 22.04]
