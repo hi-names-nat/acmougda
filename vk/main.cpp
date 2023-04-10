@@ -1,3 +1,5 @@
+#ifndef OUGDASM_MAIN_CPP
+#define OUGDASM_MAIN_CPP
 #define GLFW_INCLUDE_VULKAN
 #include <GLFW/glfw3.h>
 
@@ -8,29 +10,26 @@
 
 #include <iostream>
 #include "GlobalConfig.h"
+#include "vkrunner.hpp"
+
+int run();
 
 int main() {
-    glfwInit();
-
-    glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
-    GLFWwindow* window = glfwCreateWindow(800, 600, "Vulkan window", nullptr, nullptr);
-
-    uint32_t extensionCount = 0;
-    vkEnumerateInstanceExtensionProperties(nullptr, &extensionCount, nullptr);
-
-    std::cout << extensionCount << " extensions supported\n";
-
-    glm::mat4 matrix;
-    glm::vec4 vec;
-    auto test = matrix * vec;
-
-    while(!glfwWindowShouldClose(window)) {
-        glfwPollEvents();
+    try {if (run() == -1) return EXIT_FAILURE;}
+    catch (const std::exception& e) {
+        std::cerr << e.what() << '\n';
+        return EXIT_FAILURE;
     }
 
-    glfwDestroyWindow(window);
+    return EXIT_SUCCESS;
+}
 
-    glfwTerminate();
+int run() {
+    vkRunner runner;
 
+    if (runner.vkInit() == GLFW_FALSE) return -1;
+    runner.vkLoop();
+    runner.vkCleanup();
     return 0;
 }
+#endif //OUGDASM_MAIN_CPP

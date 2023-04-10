@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.15)
 
 project(OUGDASM_Vulkan VERSION 0.1.0)
 
-add_executable(OUGDASM_Vulkan vk/main.cpp)
+add_executable(OUGDASM_Vulkan vk/main.cpp vk/vkrunner.cpp)
 
 find_package(Vulkan)
 get_filename_component(Vulkan_LIBRARY_DIR ${Vulkan_LIBRARY} DIRECTORY)
