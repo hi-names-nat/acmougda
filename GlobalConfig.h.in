@@ -1,3 +1,9 @@
 #define OUGDASM_VERSION_MAJOR @OUGDASM_Vulkan_VERSION_MAJOR@
 #define OUGDASM_VERSION_MINOR @OUGDASM_Vulkan_VERSION_MINOR@
 #define OUGDASM_VERSION_PATCH @OUGDASM_Vulkan_VERSION_PATCH@
+
+#ifdef NDEBUG
+    const bool enableValidationLayers = false;
+#else
+    const bool enableValidationLayers = true;
+#endif

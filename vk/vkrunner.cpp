@@ -1,5 +1,6 @@
 #include <vulkan/vulkan.h>
 #include <iostream>
+#include <vector>
 #include "GLFW/glfw3.h"
 #include "vkrunner.hpp"
 #include "GlobalConfig.h"
@@ -8,7 +9,12 @@ const int WIDTH= 800;
 const int HEIGHT= 600;
 const char* WINDOW_NAME= "OUGDASM: Vulkan Renderer";
 
+const std::vector<const char*> validationLayers = {
+        "VK_LAYER_KHRONOS_validation"
+};
+
 int vkRunner::vkInit() {
+    vkCreateInstance();
     //start our GLFW instance
     std::printf("START initialize VK...\n");
     std::printf("Init GLFW...\n");
@@ -53,6 +59,10 @@ void vkRunner::vkCleanup() {
 }
 
 void vkRunner::vkCreateInstance() {
+    if (enableValidationLayers && !vkCheckValidationLayers()) {
+        throw std::runtime_error("validation layers requested, but not available!");
+    }
+
     VkApplicationInfo applicationInfo{};
     applicationInfo.sType = VK_STRUCTURE_TYPE_APPLICATION_INFO;
     applicationInfo.pApplicationName = "OUGDASM Rendering example";
@@ -70,12 +80,44 @@ void vkRunner::vkCreateInstance() {
 
     glfwExtensions = glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
 
+    //extension setups
     createInfo.enabledExtensionCount = glfwExtensionCount;
     createInfo.ppEnabledExtensionNames = glfwExtensions;
 
-    createInfo.enabledLayerCount = 0;
+    //validation layers
+    if (enableValidationLayers) {
+        createInfo.enabledLayerCount = static_cast<uint32_t>(validationLayers.size());
+        createInfo.ppEnabledLayerNames = validationLayers.data();
+    } else {
+        createInfo.enabledLayerCount = 0;
+    }
 
     if ( ::vkCreateInstance(&createInfo, nullptr, &instance) != VK_SUCCESS) {
         throw std::runtime_error("Failed to create VkInstance.");
     }
+}
+
+bool vkRunner::vkCheckValidationLayers() {
+    uint32_t layerCount;
+    vkEnumerateInstanceLayerProperties(&layerCount, nullptr);
+
+    std::vector<VkLayerProperties> availableLayers(layerCount);
+    vkEnumerateInstanceLayerProperties(&layerCount, availableLayers.data());
+
+    for (const char* layerName : validationLayers) {
+        bool layerFound = false;
+
+        for (const auto& layerProperties : availableLayers) {
+            if (strcmp(layerName, layerProperties.layerName) == 0) {
+                layerFound = true;
+                break;
+            }
+        }
+
+        if (!layerFound) {
+            return false;
+        }
+    }
+
+    return true;
 }

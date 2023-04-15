@@ -7,7 +7,7 @@ class vkRunner {
     GLFWwindow* window=nullptr;
     VkInstance instance;
 public:
-/// The initializer
+/// initializer
     int vkInit();
 
 /// Main loop
@@ -16,7 +16,9 @@ public:
 /// Teardown
     void vkCleanup();
 private:
+/// initializer
     void vkCreateInstance();
+    bool vkCheckValidationLayers();
 };
 
 #endif //OUGDASM_VULKAN_VKRUNNER_H
