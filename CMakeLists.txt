@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.15)
 
 project(OUGDASM_Vulkan VERSION 0.1.0)
 
-add_executable(OUGDASM_Vulkan vk/main.cpp vk/vkrunner.cpp)
+add_executable(OUGDASM_Vulkan vk/main.cpp)
 
 find_package(Vulkan)
 get_filename_component(Vulkan_LIBRARY_DIR ${Vulkan_LIBRARY} DIRECTORY)
@@ -52,8 +52,7 @@ ELSE()
     endif()
 endif()
 
-if (UNIX) #UNIX (assumes G++!!!!)
-
+if (UNIX) #Unix G++
     TARGET_LINK_LIBRARIES(OUGDASM_Vulkan PRIVATE #VULKAN
         "${CMAKE_SOURCE_DIR}/libunix/libglfw.so"
         "${Vulkan_LIBRARY}"

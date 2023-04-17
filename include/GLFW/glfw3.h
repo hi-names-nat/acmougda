@@ -5742,7 +5742,7 @@ GLFWAPI const char** glfwGetRequiredInstanceExtensions(uint32_t* count);
  *
  *  - `vkEnumerateInstanceExtensionProperties`
  *  - `vkEnumerateInstanceLayerProperties`
- *  - `vkCreateInstance`
+ *  - `CreateInstance`
  *  - `vkGetInstanceProcAddr`
  *
  *  If Vulkan is not available on the machine, this function returns `NULL` and
