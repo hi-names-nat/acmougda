@@ -63,4 +63,11 @@ You **can** use MSVC, however you will likely have to mess with the CMakeLists!
    `libunix` folder. Your folder structure should look like this:
       
       <img src="doc/image/linux_lib.png">
-6. Run CMake and build!
+5. Run CMake.
+6. Compile shaders. You can just use the shell script on Unix. On Windows, you'll have to use
+
+   ```shell
+   [Vulkan Dir]/x.x.x.x/Bin32/glslc.exe shader.vert -o vert.spv
+   [Vulkan Dir]/x.x.x.x/Bin32/glslc.exe shader.frag -o frag.spv
+   ```
+7. Build!
