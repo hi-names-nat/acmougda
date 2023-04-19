@@ -24,13 +24,13 @@ IF (UNIX)
     set_target_properties(OUGDASM_Vulkan PROPERTIES OUTPUT_NAME "ougdasm_vk.o")
 ENDIF()
 
-target_include_directories(OUGDASM_Vulkan PUBLIC ${PROJECT_BINARY_DIR})
-
 set(gcc_like_cxx "$<COMPILE_LANG_AND_ID:CXX,ARMClang,AppleClang,Clang,GNU,LCC>")
 set(msvc_cxx "$<COMPILE_LANG_AND_ID:CXX,MSVC>")
 
 target_compile_options(OUGDASM_Vulkan INTERFACE
-    "$<${gcc_like_cxx}:-Wextra;-Wshadow;-Wformat=2;-Wunused>"
+        # O2 is heavily suggested for any sort of building, as Vulkan without it is very inefficient.
+        # However O2 might rewrite your code, so it's not perfect for debugging.
+    "$<${gcc_like_cxx}:-Wextra;-Wshadow;-Wformat=2;-Wunused;-O2>"
     "$<${msvc_cxx}:/W3>"
 )
 
@@ -55,12 +55,13 @@ endif()
 if (UNIX) #Unix G++
     TARGET_LINK_LIBRARIES(OUGDASM_Vulkan PRIVATE #VULKAN
         "${CMAKE_SOURCE_DIR}/libunix/libglfw.so"
+        "${CMAKE_SOURCE_DIR}/libunix/libglfw.so.3"
+        "${CMAKE_SOURCE_DIR}/libunix/libglfw.so.3.3"
         "${Vulkan_LIBRARY}"
     )
 endif()
 
 target_include_directories(OUGDASM_Vulkan PRIVATE
     "${CMAKE_SOURCE_DIR}/include/"
-    "${VULKAN_SDK_PATH}/Include/"
     "${Vulkan_INCLUDE_DIR}"
 )

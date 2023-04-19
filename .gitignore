@@ -29,6 +29,9 @@
 *.a
 *.lib
 
+#compiled shaders
+*.spv
+
 # Executables
 *.exe
 *.out
